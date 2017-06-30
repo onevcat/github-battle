@@ -4,25 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-react": "^6.24.1",
+    "@types/node": "^8.0.6",
+    "awesome-typescript-loader": "^3.2.1",
     "css-loader": "^0.28.4",
     "html-webpack-plugin": "^2.29.0",
+    "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
-    "ts-loader": "^2.2.1",
     "typescript": "^2.4.1",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
+    "@types/react": "^15.0.33",
+    "@types/react-dom": "^15.5.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
