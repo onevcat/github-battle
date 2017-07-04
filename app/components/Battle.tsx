@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router'
 
 interface PlayerPreviewProps {
   username: string
@@ -84,9 +85,9 @@ interface BattleState {
   playerTwoImage: string
 }
 
-export class Battle extends React.Component<any, any> {
+export class Battle extends React.Component<RouteComponentProps<{}>, BattleState> {
 
-  constructor(props: any) {
+  constructor(props: RouteComponentProps<{}>) {
     super(props);
     this.state = {
       playerOneName: '',
