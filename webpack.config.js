@@ -30,6 +30,11 @@ module.exports = {
     ]
   },
 
+  // Handle access with path
+  devServer: {
+    historyApiFallback: true
+  },
+
   plugins: [
     HtmlWebpackPluginConfig
   ]
