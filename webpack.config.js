@@ -1,15 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/app/index.html',
-  filename: 'index.html',
-  inject: 'body'
+  template: __dirname + '/app/index.html'
 });
 
-module.exports = {
+const webpack = require('webpack');
+
+var config = {
   entry: "./app/index.tsx",
   output: {
     filename: "bundle.js",
-    path: __dirname + "/dist"
+    path: __dirname + "/dist",
+    publicPath: '/'
   },
 
   // Enable sourcemaps for debugging webpack's output.
@@ -39,3 +40,15 @@ module.exports = {
     HtmlWebpackPluginConfig
   ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  )
+}
+
+module.exports = config;

@@ -1,29 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router'
-
-interface PlayerPreviewProps {
-  username: string
-  avatar: string
-  id: string
-  onReset: (id: string) => void
-}
-
-class PlayerPreview extends React.Component<PlayerPreviewProps, {}> {
-  render() {
-    return (
-      <div>
-        <div className='column'>
-          <img className='avatar' src={this.props.avatar} />
-          <h2 className='username'>@{this.props.username}</h2>
-        </div>
-        <button className='reset' onClick={e => this.props.onReset(this.props.id)}>
-          Reset
-        </button>
-      </div>
-    )
-  }
-}
+import { PlayerPreview } from './PlayerPreview'
 
 interface PlayerInputProps {
   id: string
@@ -136,10 +114,26 @@ export class Battle extends React.Component<RouteComponentProps<{}>, BattleState
       <div>
         <div className='row'>
           {playerOneName ?
-            <PlayerPreview id='playerOne' username={playerOneName} avatar={playerOneImage} onReset={this.handleReset} /> :
+            <PlayerPreview
+              username={playerOneName}
+              avatar={playerOneImage}>
+              <button
+                className='reset'
+                onClick={e => this.handleReset('playerOne')}>
+                Reset
+              </button>
+            </PlayerPreview> :
             <PlayerInput id='playerOne' label='Player One' onSubmit={this.handleSubmit} />}
           {playerTwoName ?
-            <PlayerPreview id='playerTwo' username={playerTwoName} avatar={playerTwoImage} onReset={this.handleReset} /> :
+            <PlayerPreview
+              username={playerTwoName}
+              avatar={playerTwoImage}>
+              <button
+                className='reset'
+                onClick={e => this.handleReset('playerTwo')}>
+                Reset
+              </button>
+            </PlayerPreview> :
             <PlayerInput id='playerTwo' label='Player Two' onSubmit={this.handleSubmit} />}
         </div>
         {playerOneName && playerTwoName &&

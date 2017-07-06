@@ -13,8 +13,10 @@ export interface Repository {
   stargazers_count: number
 }
 
-interface User {
+export interface User {
   followers: number
+  login: string
+  avatar_url: string
 }
 
 function getProfile(username: string): Promise<User> {
@@ -49,7 +51,7 @@ function handleError(error: Error): null {
   return null;
 }
 
-interface UserData {
+export interface UserData {
   profile: User
   score: number
 }
